@@ -4,9 +4,25 @@ import {Context} from '../components/AppContext'
 
 function Image(props) {
     const [hovered, setHovered] = useState(false)
-    const {toggleFavorite, addToCart} = useContext(Context)
+    const {toggleFavorite, addToCart, cartItems} = useContext(Context)
 
-    const heart = props.img.isFavorite && <i className="ri-heart-fill favorite" onClick={() => toggleFavorite(props.img.id)}></i>
+    function heartIcon() {
+			if (props.img.isFavorite) {
+				return <i className="ri-heart-fill favorite" onClick={() => toggleFavorite(props.img.id)}></i>
+			} else if (hovered) {
+				return <i className="ri-heart-line favorite" onClick={() => toggleFavorite(props.img.id)}></i>
+			}
+		}
+		
+		function cartIcon() {
+			const inCartAlready = cartItems.some((item) => item.id === props.img.id)
+			
+			if (inCartAlready) {
+				return <i className="ri-shopping-cart-fill cart"></i>
+			} else if (hovered) {
+				return <i className="ri-add-circle-line cart" onClick={() => addToCart(props.img)}></i>
+			}
+		}
     
     return (
         <div
@@ -14,13 +30,8 @@ function Image(props) {
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
             >
-            {heart}
-            {hovered &&
-                <div>
-                    <i className="ri-heart-line favorite" onClick={() => toggleFavorite(props.img.id)}></i>
-                    <i className="ri-add-circle-line cart" onClick={() => addToCart(props.img)}></i>
-                </div>
-            }
+            {heartIcon()}
+            {cartIcon()}
             <img src={props.img.url} className="image-grid"/>
         </div>
     )

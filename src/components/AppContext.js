@@ -29,7 +29,7 @@ function ContextProvider(props) {
 
   return(
     // Though `photos` is an Array, pass it in an Object for easier manipulation throughout the app.
-    <Context.Provider value={{photos, toggleFavorite, addToCart}}>
+    <Context.Provider value={{photos, toggleFavorite, addToCart, cartItems}}>
       {props.children}
     </Context.Provider>
   )
