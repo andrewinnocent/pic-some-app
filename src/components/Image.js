@@ -1,4 +1,5 @@
 import React, {useState, useContext} from "react"
+import PropTypes from 'prop-types';
 import {Context} from '../components/AppContext'
 
 function Image(props) {
@@ -25,4 +26,12 @@ function Image(props) {
     )
 }
 
+Image.propTypes = {
+	className: PropTypes.string,
+	img: PropTypes.shape({
+		isFavorite: PropTypes.bool,
+		id: PropTypes.string.isRequired,
+		url: PropTypes.string.isRequired,
+	}),
+}
 export default Image
