@@ -16,6 +16,10 @@ function ContextProvider(props) {
     setCartItems(prevCartItems => [...prevCartItems, photoObj])
   }
 
+  function removeFromCart(id) {
+    setCartItems(prevCartItems => prevCartItems.filter(item => item.id !== id))
+  }
+  
   function toggleFavorite(id) {
     const mutablePhotos = [...photos]
 
@@ -29,7 +33,7 @@ function ContextProvider(props) {
 
   return(
     // Though `photos` is an Array, pass it in an Object for easier manipulation throughout the app.
-    <Context.Provider value={{photos, toggleFavorite, addToCart, cartItems}}>
+    <Context.Provider value={{photos, toggleFavorite, addToCart, cartItems, removeFromCart}}>
       {props.children}
     </Context.Provider>
   )

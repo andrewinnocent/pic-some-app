@@ -4,8 +4,8 @@ import {Context} from '../components/AppContext'
 
 function Image(props) {
     const [hovered, setHovered] = useState(false)
-    const {toggleFavorite, addToCart, cartItems} = useContext(Context)
-
+    const {toggleFavorite, addToCart, removeFromCart, cartItems} = useContext(Context)
+		
     function heartIcon() {
 			if (props.img.isFavorite) {
 				return <i className="ri-heart-fill favorite" onClick={() => toggleFavorite(props.img.id)}></i>
@@ -18,7 +18,7 @@ function Image(props) {
 			const inCartAlready = cartItems.some((item) => item.id === props.img.id)
 			
 			if (inCartAlready) {
-				return <i className="ri-shopping-cart-fill cart"></i>
+				return <i className="ri-shopping-cart-fill cart" onClick={() => removeFromCart(props.img.id)}></i>
 			} else if (hovered) {
 				return <i className="ri-add-circle-line cart" onClick={() => addToCart(props.img)}></i>
 			}
@@ -32,7 +32,7 @@ function Image(props) {
             >
             {heartIcon()}
             {cartIcon()}
-            <img src={props.img.url} className="image-grid"/>
+            <img src={props.img.url} alt={props.img.url} className="image-grid"/>
         </div>
     )
 }
