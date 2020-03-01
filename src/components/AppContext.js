@@ -10,7 +10,7 @@ function ContextProvider(props) {
       .then(resp => resp.json())
       .then(data => setPhotos(data))
   }, [])
-
+  
   return(
     // Though `photos` is an Array, pass it in an Object for easier manipulation throughout the app.
     <Context.Provider value={{photos}}>
