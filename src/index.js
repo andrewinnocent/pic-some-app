@@ -4,6 +4,14 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import './normalize.css';
 import './styles.css';
 import App from './App';
+import {ContextProvider} from './components/AppContext';
 
-ReactDOM.render(<Router><App /></Router>, document.getElementById('root'));
+ReactDOM.render(
+  <ContextProvider>
+    <Router>
+      <App />
+    </Router>
+  </ContextProvider>,
+  document.getElementById('root')
+);
 
