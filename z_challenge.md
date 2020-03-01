@@ -1,10 +1,11 @@
 # Challenge
 
-Calculate the total cost of the items in the cart and display it on the Cart page
+Let our user place their order!
 
-1. Usually the item in the database will have it's own cost saved, but we're assuming every item we sell costs $5.99, so you can just hard code that cost in
-2. To very easily display the total cost in US dollars (or whatever currency you want), use the following:
-
-`<number>.toLocaleString("en-US", {style: "currency", currency: "USD"})`
-
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString
+1. Clicking the "Place Order" button should:
+  1. Change the text to "Ordering..."
+  2. Timeout for 3 seconds (to simulate an order being placed)
+  3. Log "Order placed!" to the console
+  4. Empty out the cart
+2. Only render the "Place Order" button if there are items in the cart
+<i className="ri-delete-bin-fill"></i>

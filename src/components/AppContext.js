@@ -31,9 +31,13 @@ function ContextProvider(props) {
     setPhotos(mutablePhotos)
   }
 
+  function emptyCart() {
+    setCartItems([])
+  }
+
   return(
     // Though `photos` is an Array, pass it in an Object for easier manipulation throughout the app.
-    <Context.Provider value={{photos, toggleFavorite, addToCart, cartItems, removeFromCart}}>
+    <Context.Provider value={{photos, toggleFavorite, addToCart, cartItems, removeFromCart, emptyCart}}>
       {props.children}
     </Context.Provider>
   )

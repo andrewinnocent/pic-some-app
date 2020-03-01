@@ -52,6 +52,7 @@ div.order-button > button:focus {
 
 div.order-button > button:disabled {
     border-color: lightgray;
+    cursor: not-allowed;
 }
 
 .cart-item {
