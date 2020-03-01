@@ -4,7 +4,7 @@ import {Context} from '../components/AppContext'
 
 function Image(props) {
     const [hovered, setHovered] = useState(false)
-    const {toggleFavorite} = useContext(Context)
+    const {toggleFavorite, addToCart} = useContext(Context)
 
     const heart = props.img.isFavorite && <i className="ri-heart-fill favorite" onClick={() => toggleFavorite(props.img.id)}></i>
     
@@ -18,7 +18,7 @@ function Image(props) {
             {hovered &&
                 <div>
                     <i className="ri-heart-line favorite" onClick={() => toggleFavorite(props.img.id)}></i>
-                    <i className="ri-add-circle-line cart"></i>
+                    <i className="ri-add-circle-line cart" onClick={() => addToCart(props.img)}></i>
                 </div>
             }
             <img src={props.img.url} className="image-grid"/>
