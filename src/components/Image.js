@@ -1,7 +1,9 @@
-import React, {useState} from "react"
+import React, {useState, useContext} from "react"
+import {Context} from '../components/AppContext'
 
 function Image(props) {
     const [hovered, setHovered] = useState(false)
+    const {toggleFavorite} = useContext(Context)
 
     return (
         <div
@@ -11,7 +13,7 @@ function Image(props) {
             >
             {hovered &&
                 <div>
-                    <i className="ri-heart-line favorite"></i>
+                    <i className="ri-heart-line favorite" onClick={() => toggleFavorite(props.img.id)}></i>
                     <i className="ri-add-circle-line cart"></i>
                 </div>
             }

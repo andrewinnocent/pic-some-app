@@ -11,9 +11,20 @@ function ContextProvider(props) {
       .then(data => setPhotos(data))
   }, [])
   
+  function toggleFavorite(id) {
+    const mutablePhotos = [...photos]
+
+    mutablePhotos.forEach(photo => {
+      if (photo.id === id) {
+        photo.isFavorite = !photo.isFavorite
+      }})
+
+    setPhotos(mutablePhotos)
+  }
+
   return(
     // Though `photos` is an Array, pass it in an Object for easier manipulation throughout the app.
-    <Context.Provider value={{photos}}>
+    <Context.Provider value={{photos, toggleFavorite}}>
       {props.children}
     </Context.Provider>
   )
