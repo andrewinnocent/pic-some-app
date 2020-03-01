@@ -1,4 +1,5 @@
 import React from 'react';
+import {Route, Switch} from 'react-router-dom';
 import './styles.css';
 import './normalize.css';
 import Header from "./components/Header"
@@ -10,6 +11,15 @@ function App() {
     <div className="App">
       <Header />
       <h1>Home Page</h1>
+
+      <Switch>
+        <Route exact path="/">
+          <Photos />
+        </Route>
+        <Route path="/cart">
+          <Cart />
+        </Route>
+      </Switch>
     </div>
   );
 }
